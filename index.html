@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uma Surpresa Especial</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .mystery-glow {
+            animation: mysteryGlow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes mysteryGlow {
+            0% { box-shadow: 0 0 20px rgba(255, 235, 59, 0.3); }
+            100% { box-shadow: 0 0 40px rgba(255, 235, 59, 0.6); }
+        }
+        
+        .pulse-button {
+            animation: pulseButton 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulseButton {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .reveal-animation {
+            animation: revealSlide 1s ease-out forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        @keyframes revealSlide {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .sparkle-animation {
+            animation: sparkle 2s ease-in-out infinite;
+        }
+        
+        @keyframes sparkle {
+            0%, 100% { opacity: 0.4; transform: scale(0.8) rotate(0deg); }
+            50% { opacity: 1; transform: scale(1.2) rotate(180deg); }
+        }
+        
+        .heart-beat {
+            animation: heartBeat 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes heartBeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        
+        .typewriter {
+            overflow: hidden;
+            border-right: 3px solid #eab308;
+            white-space: nowrap;
+            animation: typing 2s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: #eab308; }
+        }
+        
+        /* Congratulations animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+        
+        @keyframes bounceIn {
+            0% { 
+                opacity: 0;
+                transform: scale(0.3) translateY(-100px);
+            }
+            50% { 
+                opacity: 1;
+                transform: scale(1.1) translateY(0);
+            }
+            70% { 
+                transform: scale(0.9);
+            }
+            100% { 
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        .congratulations-text {
+            animation: textGlow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes textGlow {
+            0% { 
+                text-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+                transform: scale(1);
+            }
+            100% { 
+                text-shadow: 0 0 20px rgba(251, 191, 36, 0.8), 0 0 30px rgba(251, 191, 36, 0.6);
+                transform: scale(1.02);
+            }
+        }
+        
+        .heart-celebration {
+            animation: heartCelebration 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes heartCelebration {
+            0%, 100% { 
+                transform: scale(1) rotate(0deg);
+            }
+            25% { 
+                transform: scale(1.2) rotate(-5deg);
+            }
+            75% { 
+                transform: scale(1.2) rotate(5deg);
+            }
+        }
+
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-yellow-100 via-yellow-50 to-white p-4 relative">
+    
+    <!-- Floating mystery elements -->
+    <div class="absolute top-10 left-10 text-3xl sparkle-animation">💛</div>
+    <div class="absolute top-20 right-16 text-2xl sparkle-animation" style="animation-delay: 1s;">🌟</div>
+    <div class="absolute bottom-20 left-20 text-3xl sparkle-animation" style="animation-delay: 2s;">✨</div>
+    <div class="absolute bottom-16 right-12 text-2xl sparkle-animation" style="animation-delay: 0.5s;">💖</div>
+    
+    <div class="max-w-2xl w-full text-center mx-auto">
+        
+        <!-- Initial mystery screen -->
+        <div id="mysteryScreen" class="bg-gradient-to-br from-gray-100 to-gray-200 rounded-3xl shadow-2xl p-8 md:p-12 mystery-glow border-2 border-yellow-300 my-8">
+            <div class="mb-8">
+                <h1 class="text-4xl md:text-5xl font-bold text-yellow-600 mb-4 flex items-center justify-center gap-3">
+                    <span>🔒</span>
+                    <span>SURPRESA SECRETA</span>
+                    <span>🔒</span>
+                </h1>
+                <div class="w-32 h-1 bg-gradient-to-r from-yellow-400 to-yellow-300 mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="mb-8">
+                <div class="text-6xl mb-6">🎁</div>
+                <p class="text-xl text-gray-700 mb-6">
+                    Olá, <span class="text-yellow-600 font-bold">Samuel</span>!
+                </p>
+                <p class="text-lg text-gray-600 mb-8">
+                    Eu tenho uma notícia muito especial para você...<br>
+                    Mas você terá que descobrir aos poucos! 😉
+                </p>
+            </div>
+            
+            <!-- Big reveal button -->
+            <button onclick="startReveal()" class="bg-gradient-to-r from-green-400 to-green-500 hover:from-green-500 hover:to-green-600 text-white font-bold py-6 px-12 rounded-full text-2xl shadow-2xl pulse-button transform hover:scale-110 transition-all duration-300 border-4 border-green-300">
+                🔓 REVELAR SURPRESA 🔓
+            </button>
+            
+            <p class="text-gray-500 mt-4 text-sm">Clique para descobrir...</p>
+        </div>
+        
+        <!-- Revelation screen (hidden initially) -->
+        <div id="revelationScreen" class="hidden bg-white rounded-3xl shadow-2xl p-8 md:p-12 border-4 border-pink-200 my-8">
+            
+            <!-- Step 1: Greeting -->
+            <div id="step1" class="hidden">
+                <h2 class="text-3xl font-bold text-yellow-700 mb-6 typewriter">
+                    Samuel, meu amor 💛
+                </h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-yellow-400 to-yellow-300 mx-auto rounded-full mb-6"></div>
+            </div>
+            
+            <!-- Step 2: 15 years together -->
+            <div id="step2" class="hidden">
+                <div class="bg-gradient-to-r from-yellow-50 to-pink-50 rounded-xl p-6 mb-6 border border-pink-200">
+                    <p class="text-lg text-gray-700">
+                        Já são <span class="font-bold text-yellow-700">15 anos juntos</span>. Quanta coisa vivemos, quantas fases passamos...
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Step 3: Our journey - two to three -->
+            <div id="step3" class="hidden">
+                <div class="text-4xl mb-4">👫</div>
+                <p class="text-lg text-gray-600 mb-4">
+                    Fomos dois. Depois, nos tornamos três.
+                </p>
+                <div class="text-4xl mb-6">👨‍👩‍👧</div>
+            </div>
+            
+            <!-- Step 4: Back to two, then three again -->
+            <div id="step4" class="hidden">
+                <div class="text-4xl mb-4">👫</div>
+                <p class="text-lg text-gray-700 mb-4">
+                    Por um tempo, voltamos a ser dois.
+                </p>
+                <p class="text-lg text-gray-700 mb-4">
+                    Mas Deus, em sua bondade, nos fez três novamente.
+                </p>
+                <div class="text-4xl mb-6">👨‍👩‍👧</div>
+            </div>
+            
+            <!-- Step 5: God's surprise -->
+            <div id="step5" class="hidden">
+                <div class="bg-gradient-to-r from-yellow-100 to-pink-100 rounded-2xl p-6 mb-6 border-4 border-yellow-300">
+                    <div class="text-4xl mb-4">🙏</div>
+                    <p class="text-xl text-gray-700 mb-4">
+                        E hoje, Ele nos surpreende mais uma vez...
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Step 6: We will be four -->
+            <div id="step6" class="hidden">
+                <div class="bg-gradient-to-r from-yellow-100 to-pink-100 rounded-2xl p-8 mb-6 border-4 border-yellow-300">
+                    <div class="text-6xl mb-4">👨‍👩‍👧‍👶</div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-yellow-700 mb-4">
+                        Agora, vamos ser quatro.
+                    </h2>
+                    <p class="text-2xl text-gray-700 font-semibold">
+                        Sim, amor... estou grávida.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Step 7: Final message -->
+            <div id="step7" class="hidden">
+                <div class="bg-gradient-to-r from-yellow-50 to-pink-50 rounded-xl p-6 border border-pink-200 mb-6">
+                    <p class="text-gray-700 text-lg font-medium mb-4">
+                        Nosso amor continua crescendo.
+                    </p>
+                    <p class="text-gray-700 text-lg font-medium mb-4">
+                        E eu não poderia imaginar viver essa nova fase com outra pessoa além de você.
+                    </p>
+                    <p class="text-yellow-700 font-semibold text-xl">
+                        Te amo,<br>
+                        Eudianne 💕
+                    </p>
+                </div>
+                
+                <div class="flex justify-center space-x-6 text-3xl mb-8">
+                    <span class="sparkle-animation">🍼</span>
+                    <span class="sparkle-animation" style="animation-delay: 1s;">👶</span>
+                    <span class="sparkle-animation" style="animation-delay: 2s;">🧸</span>
+                    <span class="sparkle-animation" style="animation-delay: 1.5s;">👣</span>
+                </div>
+                
+                <div class="space-y-6">
+                    <!-- Big celebration heart -->
+                    <div onclick="celebrate()" class="cursor-pointer transform hover:scale-110 transition-all duration-300">
+                        <div class="text-8xl heart-beat">💖</div>
+                        <p class="text-gray-600 text-sm mt-2">Clique no coração para celebrar!</p>
+                    </div>
+                    
+                    <button onclick="resetToStart()" class="bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-white font-semibold py-3 px-6 rounded-full text-sm shadow-md transform hover:scale-105 transition-all duration-300 border-2 border-yellow-300">
+                        🔄 Reviver a Surpresa
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let currentStep = 0;
+        
+        function startReveal() {
+            // Hide mystery screen
+            document.getElementById('mysteryScreen').style.display = 'none';
+            
+            // Show revelation screen
+            document.getElementById('revelationScreen').classList.remove('hidden');
+            
+            // Start revealing steps
+            revealNextStep();
+        }
+        
+        function revealNextStep() {
+            currentStep++;
+            const stepElement = document.getElementById('step' + currentStep);
+            
+            if (stepElement) {
+                stepElement.classList.remove('hidden');
+                stepElement.classList.add('reveal-animation');
+                
+                // Scroll to the new element smoothly after a short delay
+                setTimeout(() => {
+                    stepElement.scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'center',
+                        inline: 'nearest'
+                    });
+                }, 500);
+                
+                // Continue to next step after delay
+                if (currentStep < 7) {
+                    setTimeout(revealNextStep, currentStep === 1 ? 3000 : 2500);
+                }
+            }
+        }
+        
+        function celebrate() {
+            // Create confetti effect
+            for (let i = 0; i < 100; i++) {
+                setTimeout(() => createConfetti(), i * 50);
+            }
+            
+            // Create and show the beautiful congratulations message
+            showCongratulationsMessage();
+        }
+        
+        function showCongratulationsMessage() {
+            // Create the congratulations overlay
+            const overlay = document.createElement('div');
+            overlay.id = 'congratsOverlay';
+            overlay.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+            overlay.style.animation = 'fadeIn 0.5s ease-out';
+            
+            const messageBox = document.createElement('div');
+            messageBox.className = 'bg-gradient-to-br from-yellow-100 to-pink-100 rounded-3xl p-8 md:p-12 shadow-2xl border-4 border-yellow-300 text-center max-w-md mx-4';
+            messageBox.style.animation = 'bounceIn 0.8s ease-out';
+            
+            messageBox.innerHTML = `
+                <div class="congratulations-content">
+                    <div class="text-6xl mb-4 animate-bounce">🎉</div>
+                    <h2 class="text-4xl md:text-5xl font-bold text-yellow-700 mb-4 congratulations-text">
+                        Parabéns,<br>Papai!
+                    </h2>
+                    <div class="text-5xl mb-4 heart-celebration">👨‍👩‍👶</div>
+                    <p class="text-lg text-gray-700 mb-6 font-medium">
+                        Uma nova aventura começa! 💛
+                    </p>
+                    <button onclick="closeCongratulations()" class="bg-gradient-to-r from-green-400 to-green-500 hover:from-green-500 hover:to-green-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300">
+                        ✨ Continuar Celebrando ✨
+                    </button>
+                </div>
+            `;
+            
+            overlay.appendChild(messageBox);
+            document.body.appendChild(overlay);
+            
+            // Auto close after 6 seconds
+            setTimeout(() => {
+                if (document.getElementById('congratsOverlay')) {
+                    closeCongratulations();
+                }
+            }, 6000);
+        }
+        
+        function closeCongratulations() {
+            const overlay = document.getElementById('congratsOverlay');
+            if (overlay) {
+                overlay.style.animation = 'fadeOut 0.5s ease-out';
+                setTimeout(() => {
+                    overlay.remove();
+                }, 500);
+            }
+        }
+        
+        function resetToStart() {
+            // Reset step counter
+            currentStep = 0;
+            
+            // Hide revelation screen
+            document.getElementById('revelationScreen').classList.add('hidden');
+            
+            // Hide all steps
+            for (let i = 1; i <= 7; i++) {
+                const step = document.getElementById('step' + i);
+                step.classList.add('hidden');
+                step.classList.remove('reveal-animation');
+            }
+            
+            // Show mystery screen again
+            document.getElementById('mysteryScreen').style.display = 'block';
+        }
+        
+        function createConfetti() {
+            const confetti = document.createElement('div');
+            const emojis = ['🎉', '🎊', '💛', '🧡', '✨', '🌟', '👶', '🍼', '👣', '🧸'];
+            confetti.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+            confetti.style.position = 'fixed';
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.top = '-10px';
+            confetti.style.fontSize = Math.random() * 20 + 15 + 'px';
+            confetti.style.zIndex = '1000';
+            confetti.style.pointerEvents = 'none';
+            
+            document.body.appendChild(confetti);
+            
+            const animation = confetti.animate([
+                { 
+                    transform: 'translateY(-10px) rotate(0deg)', 
+                    opacity: 1 
+                },
+                { 
+                    transform: `translateY(100vh) rotate(${Math.random() * 720}deg)`, 
+                    opacity: 0 
+                }
+            ], {
+                duration: Math.random() * 3000 + 2000,
+                easing: 'ease-out'
+            });
+            
+            animation.onfinish = () => confetti.remove();
+        }
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96441b40517d82f4',t:'MTc1MzM2NzMzMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
